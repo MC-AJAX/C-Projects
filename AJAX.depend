@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1538002891 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjprog3.cpp
+	<iostream>
+	"NRJJDate.h"
+
+1538002646 c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjdate.h
+
+1538605317 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjprog4.cpp
+	<iostream>
+
+1541516187 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjprog9.cpp
+	<iostream>
+
+1541622396 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjextracredit.cpp
+	<iostream>
+	<iomanip>
+
+1541725365 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjprog10.cpp
+	<iostream>
+
+1543432516 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjprog11.cpp
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	<array>
+	<ctime>
+	<random>
+
+1544124837 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjrational.cpp
+	<iostream>
+	<string>
+	<sstream>
+	"NRJJRational.h"
+
+1544125561 source:c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjrationaltest.cpp
+	<iostream>
+	"NRJJRational.h"
+
+1544127998 c:\data -- nate laptop\franciscan\object oriented programing\c++\ajax\nrjjrational.h
+	<string>
+
