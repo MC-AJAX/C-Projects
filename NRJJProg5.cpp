@@ -1,46 +1,100 @@
-//Nathan Jermann, CSC 144 A, assignment #5, 10-4-18
-//Program which displays the numbers 1 through 5 and multiplies them by 10, 100, and 1000.
-
+//Nathan Jermann, CSC 145 A, assignment #5, 3-20-19
+//int and double list that tests NRJJLinkedList.h
 #include <iostream>
+#include "NRJJLinkedList.h"
+#include "NRJJNode.h"
 using namespace std;
 
 int main() {
 
-    unsigned int x{0}; //Initialize variables
-    unsigned int xCounter{0};
-    unsigned int temp{0};
+    LinkedList<int> list1 = LinkedList<int>();
 
-   cout << "x\tx*10\tx*100\tx*1000" << endl; //Prints a list of what the program will do to "x".
+    list1.InsertHead(13);
 
-    while (xCounter < 5) { //loop which repeats until "xCounter" hits 5
-        x = x + 1; //Adds 1 to "x" and "xCounter" ever time the loop cycles.
-        xCounter = xCounter + 1;
+    list1.InsertHead(15);
 
-        cout << x <<"\t";
+    list1.Insert(2,43);
 
-        temp = x * 10;
-        cout << temp << "\t"; //Prints "x" * 10 uses tab.
+    list1.InsertTail(76);
 
-        temp = x * 100;
-        cout << temp << "\t";
+    cout << "List1 after first print:" << endl;
+    list1.PrintList();
+    cout << endl;
 
-        temp = x * 1000;
-        cout << temp << endl;
+    cout << "Value of second index:" << endl;
+    Node<int> * getPtr = list1.Get(1);
+    if(getPtr != NULL) {
+        cout << getPtr->Value;
     }
+    else{
+        cout << "Not found";
+    }
+    cout << "\n" << endl;
+
+    cout << "Position of element 76:" << endl;
+    int temp = list1.Search(76);
+    cout << temp << "\n" << endl;
+
+    list1.Remove(0);
+
+    cout << "List1 after first element removed:" << endl;
+    list1.PrintList();
+    cout << endl;
+
+    cout << "list1 after removing 5th element:" << endl;
+    list1. Remove(5);
+    list1.PrintList();
+    cout << endl;
+
+    cout << "list1 after removing tail:" << endl;
+    list1.RemoveTail();
+    list1.PrintList();
+    cout << endl;
+
+
+
+    LinkedList<double> list2 = LinkedList<double>();
+
+    list2.InsertHead(13.5);
+
+    list2.InsertHead(15.4);
+
+    list2.Insert(2,43.3);
+
+    list2.InsertTail(76.2);
+
+    cout << "List2 after first print:" << endl;
+    list2.PrintList();
+    cout << endl;
+
+    cout << "Value of second index:" << endl;
+    Node<double> * get2Ptr = list2.Get(1);
+    if(get2Ptr != NULL) {
+        cout << get2Ptr->Value;
+    }
+    else{
+        cout << "Not found";
+    }
+    cout << "\n" << endl;
+
+    cout << "Position of element 76:" << endl;
+    int temp2 = list2.Search(76.2);
+    cout << temp2 << "\n" << endl;
+
+    list2.Remove(0);
+
+    cout << "List2 after first element removed:" << endl;
+    list2.PrintList();
+    cout << endl;
+
+    cout << "list2 after removing 5th element:" << endl;
+    list2.Remove(5);
+    list2.PrintList();
+    cout << endl;
+
+    cout << "list2 after removing tail:" << endl;
+    list2.RemoveTail();
+    list2.PrintList();
+    cout << endl;
 }
 
-/*
-Initialize variables.
-Print "x"    x*10    x*100   x*1000
-
-While "xCounter" is less than 5
-    add 1 to "x"
-    add 1 to "xCounter"
-    print "x" and use tab
-    "temp" = "x" * 10
-    print "temp" and use tab
-    "temp" = "x" * 100
-    print "temp" and use tab
-    "temp" = "x" * 1000
-    print "temp" and set cursor to next
-*/

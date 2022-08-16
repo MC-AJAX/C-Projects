@@ -1,116 +1,108 @@
-//Nathan Jermann, CSC 144 A, assignment #4, 10-3-18
-//Program which accepts 3 integers and checks to see if they form a right triangle.
-
+//Nathan Jermann, CSC 145 A, assignment #4, 3-5-19
+//Program which tests the equalList function
+#include "List.h"
 #include <iostream>
-
 using namespace std;
 
-int main() {
+bool equalList(List & a, List & b);//function signatures
+void boolTest(bool a);
 
-    int num1{0}; // Initialize variables.
-    int num2{0};
-    int num3 {0};
-    int side1{0};
-    int side2{0};
-    int longestSide{0};
-    int shorterSides{0};
-    int temp{0};
+int main(){
 
-    cout << "Enter three positive integers: "; // Prompt user to enter 3 positive integers.
-    cin >> num1 >> num2 >> num3;
+    List list1 = List();//initialize 4 list objects
+    List list2 = List();
+    List list3 = List();
+    List list4 = List();
 
-    if (num1 < 0) { // This block checks to see if the 3 integers are positive,
-        num1 = 1; // if no the integer is set to one.
-    }
-    if (num2 < 0) {
-        num2 = 1;
-    }
-    if (num3 < 0) {
-        num3 = 1;
-    }
+    list1.Insert(0, 21);//initialize the elements of list 1
+    list1.Insert(1, 47);
+    list1.Insert(2, 87);
+    list1.Insert(3, 35);
+    list1.Insert(4, 92);
 
+    list2.Insert(0, 21);//initialize the elements of list 2
+    list2.Insert(1, 47);//numbers equal to list 1
+    list2.Insert(2, 87);
+    list2.Insert(3, 35);
+    list2.Insert(4, 92);
 
-    cout << "The side lengths are: " << num1 << " " << num2 << " " << num3 << endl; // Prints the 3 sides.
+    list3.Insert(0, 10);//initialize the elements of list 3
+    list3.Insert(1, 20);//different numbers than list 1
+    list3.Insert(2, 30);
+    list3.Insert(3, 40);
+    list3.Insert(4, 50);
 
-    if (num3 < num2) { // This block tests to see which integer is largest,
-        temp = num3; // Then sets "num3" equal to the largest integer.
-        num3 = num2;
-        num2 = temp;
-    }
+    list4.Insert(0, 21);//initialize the elements of list 4
+    list4.Insert(1, 47);//different amount of numbers than list 1
+    list4.Insert(2, 87);
+    list4.Insert(3, 35);
+    list4.Insert(4, 92);
+    list4.Insert(5, 71);
 
-    if (num2 < num1) {
-        temp = num2;
-        num2 = num1;
-        num1 = temp;
-    }
+    bool returnVal = false;//create a bool variable
 
-    if (num3 < num2) {
-        temp = num3;
-        num3 = num2;
-        num2 = temp;
-    }
+    cout << "Is list1 equal to list2?: " << endl;//check if list1 = list2
+    returnVal = equalList(list1, list2);
+    boolTest(returnVal);
 
-    longestSide = num3; //sets integers equal to different sides.
-    side2 = num2;
-    side1 = num1;
+    cout << "Is list1 equal to list3?: " << endl;//check if list1 = list3
+    returnVal = equalList(list1, list3);
+    boolTest(returnVal);
 
-    longestSide = longestSide * longestSide; // This block places the sides in the equation a^2 + b^2 = c^2
-    side1 = side1 * side1;
-    side2 = side2 * side2;
-    shorterSides = side1 + side2; // Then simplifies.
+    cout << "Is list1 equal to list4?: " << endl;//check if list1 = list4
+    returnVal = equalList(list1, list4);
+    boolTest(returnVal);
 
-    if (shorterSides == longestSide) { // Tests to see if a^2 + b^2 = c^2
-        cout << "These sides form a right triangle.";
+    cout << "Is list3 equal to list4?: " << endl;//check if list3 = list4
+    returnVal = equalList(list3, list4);
+    boolTest(returnVal);
+}
+
+bool equalList(List & a, List & b){//function that tests if 2 list objects are equal
+    int valTrue = 0;
+
+    if(a.Count() == b.Count()){//checks if both objects the same size
+
+        for(int temp = 0; temp < a.Count(); ++temp) {
+            if(a.Get(temp) == b.Get(temp)){//checks if each element is the same in both objects
+                valTrue++;//for each set of elements that are the same add 1 to valTrue
+            }
+        }
+        if(valTrue == a.Count()){//if valTrue equals the original list size return true
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     else {
-        cout << "These sides do not form a right triangle.";
+        return false;
+    }
+}
+
+void boolTest(bool a) {//function to print true or false based on a bool value
+    if (a == 1) {
+        cout << "true" << endl;
+    }
+    else{
+        cout << "false" << endl;
     }
 }
 
 /*
-Initialize variables to 0.
 
-Prompt user to enter 3  positive integers.
+bool equalList(List &a, List &b)
 
-Tests to make sure each integer is greater than 0.
-    if num1 < 0
-        set num1 = 1
-    if num2 < 0
-        set num2 = 1
-    if num3 < 0
-        set num3 = 1
+    if both objects the same size
 
-Print the sides.
+        loop for each element of list a
+            if element x of list a is equal to element x of list b
+                add 1 to valTrue
 
-Tests to see which integer is the largest and sets that integer equal to "num3"
-    if "num2" greater than "num3"
-        temp = num3
-        num3 = num2
-        num2 = temp  ->  Sets "num3" greater than "num2"
+        if valTrue equals the size of list a
+            return true
+        else
+            return false
+    else
+        return false
 
-    if "num2" smaller than "num1"
-        temp = num2
-        num2 = num1
-        num1 = temp  ->  Sets "num2" greater than "num1"
-
-    if "num2" greater than "num3"
-        temp = num3
-        num3 = num2
-        num2 = temp   -> Sets "num3" greater than "num2"
-
-Set "num3" = "longestSide"
-Set "num2" = "side2"
-Set "num1" = "side1"
-
-Place the variables in the equation a^2 + b^2 = c^2 then simplify.
-    Multiply "longestSide" by itself and store the result in "longestSide
-    Multiply "side2" by itself and store the result in "side2"
-    Multiply "side1" by itself and store the result in "side1"
-    Add "side1" to "side2" and store the result in "shorterSides"
-
-If "shorterSides" is equal to "longestSide"
-    then print "These sides form a right triangle."
-
-Else print
-    "These sides do not form a right triangle."
-*/

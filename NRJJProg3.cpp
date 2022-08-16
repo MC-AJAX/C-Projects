@@ -1,45 +1,35 @@
-//Nathan Jermann, CSC 144 A, assignment #3, 9-26-18
-//Program which demonstrates FMCLDate’s capabilities.
-
-#include <iostream>
-#include "NRJJDate.h"
-
+//Nathan Jermann, CSC 145 A, assignment #3, 2-21-19
+//Program which tests the inheritance of base class NRJJAccount
+#include<iostream>
+#include "NRJJAccount.h"
+#include "NRJJSavingsAccount.h"
+#include "NRJJCheckingAccount.h"
 using namespace std;
 
 int main() {
 
-    Date testDate(9, 26, 2018); //gives the constructor the initial values for month, day, and year.
+    NRJJAccount account1(4.0);
+    NRJJSavingsAccount account2(2.0, 2.0);
+    NRJJCheckingAccount account3(3.0, 1.0);
 
-    cout << "Initial month is: " << testDate.getMonth() << endl; //displays the initial month.
+    cout << "Initial amount in Account1 balance: $" << account1.getBalance() << endl;
 
-    cout << "Initial day is: " << testDate.getDay() << endl; // displays the initial day.
+    account1.credit(1.0);
+    cout << "Account1 balance after adding $1 credit: $" << account1.getBalance() << endl;
 
-    cout << "Initial year is: " << testDate.getYear() << endl; //displays the initial year.
+    account1.debit(2.0);
+    cout << "Account1 balance after withdrawing $2: $" << account1.getBalance() << "\n" << endl;
 
-    cout << "Enter a month:"; //prompts the user to enter a value for month.
-    int theMonth;
-    cin >> theMonth;
+    cout<< "Initial amount in Account2 balance: $" << account2.getBalance() << endl;
 
-    if (theMonth > 12) { //checks to make sure the month is less than 12,
-        theMonth = 1; //otherwise month is set to 1.
-    }
+    cout << "Account2 balance with interest added: $" << account2.calculateInterest() << "\n" << endl;
 
-    if (theMonth < 1) { //checks to make sure month is greater than 0,
-        theMonth = 1; //otherwise month is set to 1.
-    }
+    cout << "Initial amount in Account3 balance: $" << account3.getBalance() << endl;
 
-    testDate.setMonth(theMonth); //stores the value in month.
+    account3.credit(2.0);
+    cout << "Account3 balance after adding $2 credit, with fee: $" << account3.getBalance() << endl;
 
+    account3.debit(2.0);
+    cout << "Account3 balance after withdrawing $2, with fee: $" << account3.getBalance() << endl;
 
-    cout << "Enter a day:"; //prompts the user to enter a value for day.
-    int theDay;
-    cin >> theDay;
-    testDate.setDay(theDay); //stores the value in day.
-
-    cout << "Enter a year:"; //prompts the user to enter a value for year.
-    int theYear;
-    cin >> theYear;
-    testDate.setYear(theYear); //stores the user to enter a value for year.
-
-    testDate.displayDate(); //displays the date.
 }
